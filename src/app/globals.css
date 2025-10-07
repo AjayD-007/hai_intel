@@ -1,26 +1,177 @@
 @import "tailwindcss";
 
+/* ============================================
+   Base Theme Variables
+   ============================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 0 0% 100%;
+  --foreground: 220 20% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 20% 14%;
+  --primary: 220 40% 18%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 20% 14%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 8% 46%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 220 40% 18%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 220 40% 18%;
+
+  --intelligence-blue: 214 84% 56%;
+  --intelligence-blue-foreground: 0 0% 98%;
+  --warm-amber: 38 92% 50%;
+  --warm-amber-foreground: 220 40% 18%;
+  --deep-navy: 220 40% 18%;
+  --soft-gray: 220 14% 96%;
+  --electric-cyan: 192 100% 50%;
+  --neon-purple: 267 64% 60%;
+  --electric-green: 120 100% 55%;
+  --lightning-white: 0 0% 100%;
+  --deep-space: 225 43% 8%;
+
+  --gradient-primary: linear-gradient(135deg, hsl(220 40% 18%), hsl(214 84% 56%));
+  --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%), hsl(45 86% 62%));
+  --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+
+  --shadow-elegant: 0 20px 25px -5px hsl(220 40% 18% / 0.1),
+                    0 10px 10px -5px hsl(220 40% 18% / 0.04);
+  --shadow-intelligence: 0 10px 30px -10px hsl(214 84% 56% / 0.3);
+  --shadow-warm: 0 10px 30px -10px hsl(38 92% 50% / 0.2);
+
+  --transition-smooth: all .3s cubic-bezier(.4, 0, .2, 1);
+  --radius: .75rem;
+
+  /* Sidebar Theme */
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
+/* ============================================
+   Dark Mode (prefers-color-scheme)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 220 40% 6%;
+    --foreground: 0 0% 98%;
+    --card: 220 40% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 40% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 14% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 220 8% 70%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 220 40% 18%;
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 214 84% 56%;
+    --sidebar-background: 220 40% 8%;
+    --sidebar-foreground: 0 0% 98%;
+  }
+}
+
+/* ============================================
+   Tailwind Inline Theme Mapping
+   ============================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* ========== Base Colors ========== */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* ========== Extended Palette ========== */
+  --color-intelligence-blue: hsl(var(--intelligence-blue));
+  --color-intelligence-blue-foreground: hsl(var(--intelligence-blue-foreground));
+
+  --color-warm-amber: hsl(var(--warm-amber));
+  --color-warm-amber-foreground: hsl(var(--warm-amber-foreground));
+
+  --color-deep-navy: hsl(var(--deep-navy));
+  --color-soft-gray: hsl(var(--soft-gray));
+  --color-electric-cyan: hsl(var(--electric-cyan));
+  --color-neon-purple: hsl(var(--neon-purple));
+  --color-electric-green: hsl(var(--electric-green));
+  --color-lightning-white: hsl(var(--lightning-white));
+  --color-deep-space: hsl(var(--deep-space));
+
+  /* ========== Gradients ========== */
+  --gradient-primary: var(--gradient-primary);
+  --gradient-accent: var(--gradient-accent);
+  --gradient-subtle: var(--gradient-subtle);
+
+  /* ========== Shadows ========== */
+  --shadow-elegant: var(--shadow-elegant);
+  --shadow-intelligence: var(--shadow-intelligence);
+  --shadow-warm: var(--shadow-warm);
+
+  /* ========== Transitions ========== */
+  --transition-smooth: var(--transition-smooth);
+
+  /* ========== Radius ========== */
+  --radius: var(--radius);
+
+  /* ========== Sidebar Theme ========== */
+  --color-sidebar-background: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* ========== Fonts ========== */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
+/* ============================================
+   Base Styles
+   ============================================ */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  transition: var(--transition-smooth);
 }
