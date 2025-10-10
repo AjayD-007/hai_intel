@@ -2,8 +2,7 @@ name: CI - Build, Lint, and Test
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main, master ,dev, feature/* ]
   pull_request:
     branches:
       - main
